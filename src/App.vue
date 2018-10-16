@@ -28,6 +28,13 @@ export default {
     clear () {
       this.msg = ''
     }
+  },
+  created () {
+    var that = this
+    $.getJSON('http://www.geonames.org/postalCodeLookupJSON?postalcode=10504&country=US&callback=?', {}, function (json) {
+      console.log(json)
+      that.msg = json.postalcodes[0].adminName1
+    })
   }
 }
 </script>
